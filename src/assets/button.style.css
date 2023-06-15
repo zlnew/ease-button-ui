@@ -1,5 +1,6 @@
 * {
     --primary-color: #1d4ed8;
+    --secondary-color: #71717a;
     --success-color: #059669;
     --warning-color: #fde047;
     --info-color: #0ea5e9;
@@ -53,6 +54,10 @@ button:disabled {
 
 .color-primary {
     background-color: var(--primary-color);
+    color: var(--white-color);
+}
+.color-secondary {
+    background-color: var(--secondary-color);
     color: var(--white-color);
 }
 .color-success {

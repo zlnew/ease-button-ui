@@ -6,15 +6,13 @@ const props = withDefaults(
         slot?: boolean,
         type?: 'submit' | 'reset' | 'button';
         text?: string;
-        color?: 'primary' | 'success' | 'warning' | 'info' | 'danger' | 'light' | 'dark';
+        color?: 'primary' | 'secondary' | 'success' | 'warning' | 'info' | 'danger' | 'light' | 'dark';
         size?: 'sm' | 'base' | 'lg' | 'xl',
-        disabled?: boolean;
     }>(), {
         slot: false,
         type: 'button',
         color: 'primary',
         size: 'base',
-        processing: false,
     }
 );
 
@@ -22,6 +20,8 @@ const colorClasses = computed(() => {
     switch (props.color) {
         case 'primary':
             return 'color-primary';
+        case 'secondary':
+            return 'color-secondary';
         case'success':
             return 'color-success';
         case 'warning':
@@ -59,7 +59,6 @@ const sizeClasses = computed(() => {
     <button v-if="!slot" v-bind="{
         type: type,
         class: [colorClasses, sizeClasses],
-        disabled: props.disabled,
     }">
         {{ props.text }}
     </button>
@@ -67,7 +66,6 @@ const sizeClasses = computed(() => {
     <button v-else v-bind="{
         type: type,
         class: [colorClasses, sizeClasses],
-        disabled: props.disabled,
     }">
         <slot></slot>
     </button>

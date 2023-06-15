@@ -15,8 +15,6 @@ npm install vue-colorful-button-ui
 The `vue-colorful-button` component supports the following props:
 
 - `slot` (Boolean): Whether the button contains a slot. Defaults to `false`.
-- `type` (String): The type of the button. Available options: `button`, `submit`, `reset` . Defaults to `button`;
 - `text` (String): The text of the button.
-- `color` (String): The type of the button. Available options: `'primary'`, `'success'`, `'danger'`, `'warning'`, `'info'`, `'light`, `'dark'`. Defaults to `'primary'`.
+- `color` (String): The type of the button. Available options: `'primary'`, `'secondary'` `'success'`, `'danger'`, `'warning'`, `'info'`, `'light`, `'dark'`. Defaults to `'primary'`.
 - `size` (String): The size of the button. Available options: `'sm'`, `'base'`, `'lg'`, `'xl'`. Defaults to `'base'`.
-- `disabled` (Boolean): Disable the button. Defaults to `false`.

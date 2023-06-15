@@ -15,6 +15,12 @@ import ColorfulButton from './components/ColorfulButton.vue';
       }"
     />
     <ColorfulButton v-bind="{
+        text: 'Secondary',
+        color: 'secondary',
+        size: 'sm',
+      }"
+    />
+    <ColorfulButton v-bind="{
         text: 'Success',
         color: 'success',
         size: 'sm',
@@ -59,6 +65,11 @@ import ColorfulButton from './components/ColorfulButton.vue';
       }"
     />
     <ColorfulButton v-bind="{
+        text: 'Secondary',
+        color: 'secondary',
+      }"
+    />
+    <ColorfulButton v-bind="{
         text: 'Success',
         color: 'success',
       }"
@@ -98,6 +109,12 @@ import ColorfulButton from './components/ColorfulButton.vue';
       }"
     />
     <ColorfulButton v-bind="{
+        text: 'Secondary',
+        color: 'secondary',
+        size: 'lg',
+      }"
+    />
+    <ColorfulButton v-bind="{
         text: 'Success',
         color: 'success',
         size: 'lg',
@@ -139,6 +156,12 @@ import ColorfulButton from './components/ColorfulButton.vue';
     <ColorfulButton v-bind="{
         text: 'Primary',
         color: 'primary',
+        size: 'xl',
+      }"
+    />
+    <ColorfulButton v-bind="{
+        text: 'Secondary',
+        color: 'secondary',
         size: 'xl',
       }"
     />
