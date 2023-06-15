@@ -1,10 +1,10 @@
-# Vue Colorful Button
+# Vue Colorful Button UI
 
 A Colorful Bootstrap-like button UI component for your Vue.js projects.
 
 ## Installation
 
-You can install `vue-colorful-button` via npm by running the following command:
+You can install `vue-colorful-button-ui` via npm by running the following command:
 
 ```bash
 npm install vue-colorful-button-ui
@@ -15,7 +15,6 @@ npm install vue-colorful-button-ui
 Basic usage example:
 - Global registration
 ```js
-[label main.js]
 import { createApp } from 'vue';
 import App from './App.vue';
 import ColorfulButton from "vue-colorful-button-ui";
@@ -28,7 +27,6 @@ app.mount('#app')
 
 - Local Registration
 ```vue
-[App.vue]
 <script>
 import ColorfulButton from "vue-colorful-button-ui";
 </script>
@@ -54,7 +52,7 @@ properties usage with v-bind:
 } />
 ```
 
-You want to slot the content inside the button? just do this:
+What if you want to slots content inside the button? Just do this:
 
 ```vue
 <ColorfulButton slot>
@@ -64,9 +62,11 @@ You want to slot the content inside the button? just do this:
 
 ## Props
 
-The `vue-colorful-button` component supports the following props:
+The `vue-colorful-button-ui` component supports the following props:
 
-- `slot` (Boolean): Whether the button contains a slot. Defaults to `false`.
-- `text` (String): The text of the button.
-- `color` (String): The type of the button. Available options: `'primary'`, `'secondary'` `'success'`, `'danger'`, `'warning'`, `'info'`, `'light`, `'dark'`. Defaults to `'primary'`.
-- `size` (String): The size of the button. Available options: `'sm'`, `'base'`, `'lg'`, `'xl'`. Defaults to `'base'`.
+```ts
+slot: boolean // default: false
+text: string
+color: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' // default: 'primary'
+size: 'sm' | 'base' | 'lg' | 'xl' //default 'base'
+```
