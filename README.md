@@ -52,7 +52,7 @@ properties usage with v-bind:
 } />
 ```
 
-What if you want to slots content inside the button? Just do this:
+What if you want to `'slots'` content inside the button instead using `'text'` properties? Just do this:
 
 ```vue
 <ColorfulButton slot>
