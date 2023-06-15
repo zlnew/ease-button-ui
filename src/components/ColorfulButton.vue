@@ -8,7 +8,7 @@ const props = withDefaults(
         text?: string;
         color?: 'primary' | 'success' | 'warning' | 'info' | 'danger' | 'light' | 'dark';
         size?: 'sm' | 'base' | 'lg' | 'xl',
-        processing?: boolean;
+        disabled?: boolean;
     }>(), {
         slot: false,
         type: 'button',
@@ -59,7 +59,7 @@ const sizeClasses = computed(() => {
     <button v-if="!slot" v-bind="{
         type: type,
         class: [colorClasses, sizeClasses],
-        disabled: props.processing,
+        disabled: props.disabled,
     }">
         {{ props.text }}
     </button>
@@ -67,7 +67,7 @@ const sizeClasses = computed(() => {
     <button v-else v-bind="{
         type: type,
         class: [colorClasses, sizeClasses],
-        disabled: props.processing,
+        disabled: props.disabled,
     }">
         <slot></slot>
     </button>
