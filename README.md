@@ -1,72 +1,80 @@
-# Vue Colorful Button UI
+# Ease Button UI
 
-A Colorful Bootstrap-like button UI component for your Vue.js projects.
+A simple yet customisable button UI for your Vue.js projects. With Ease!
 
 ## Installation
 
-You can install `vue-colorful-button-ui` via npm by running the following command:
+You can install `ease-button-ui` via npm by running the following command:
 
 ```bash
-npm install vue-colorful-button-ui
+npm install ease-button-ui --save-dev
+```
+* this package require you to install pinia, so make sure you already have it.
+Or install it by running the following command:
+
+```bash
+npm install pinia
+```
+
+## Registration
+
+On your `'main.js'`
+
+```js
+import "ease-button-ui/style";
+import { createPinia } from "pinia";
+
+import { createApp } from 'vue';
+import App from './App.vue';
+
+const pinia = createPinia();
+const vue = createApp(App);
+
+vue.use(pinia);
+vue.mount('#app')
 ```
 
 ## Usage
 
-Basic usage example:
-- Global registration
-```js
-import { createApp } from 'vue';
-import App from './App.vue';
-import ColorfulButton from "vue-colorful-button-ui";
-
-const app = createApp(App);
-
-app.component('ColorfulButton', ColorfulButton);
-app.mount('#app')
-```
-
-- Local Registration
 ```vue
 <script>
-import ColorfulButton from "vue-colorful-button-ui";
+import { EaseButton } from "ease-button-ui";
 </script>
 
 <template>
-    <ColorfulButton text="Hello World!" />
+    <EaseButton text="Hello World!" variant="primary" size="base" rounded="base" />
+
+    <EaseButton text="Loading.." variant="primary" size="base" rounded="base" loading />
+
+    <EaseButton text="Hello World!" variant="primary" size="base" rounded="base" slot>
+        Hello World!
+    </EaseButton>
 </template>
 ```
 
-With properties:
+## Custom Color
+
+You can modify the default color to your favorite color, by using this:
 
 ```vue
-<ColorfulButton text="Hello World!" color="success" size="lg" />
+<script>
+import { EaseButton, useCustomButton} from "ease-button-ui";
+
+const ease = useCustomButton();
+
+ease.defineColor('--favorite-color') * accept only css variable and hex code;
+</script>
 ```
 
-properties usage with v-bind:
-
-```vue
-<ColorfulButton v-bind={
-    text: 'Hello World!',
-    color: 'success',
-    size: 'lg',
-} />
-```
-
-What if you want to `slots` content inside the button instead of using `text` properties? Just do this:
-
-```vue
-<ColorfulButton slot>
-    Hello World!
-</ColorfulButton>
-```
-
-## Props
-
-The `vue-colorful-button-ui` component supports the following props:
+## available properties
 
 ```ts
-slot: boolean // default: false
-text: string
-color: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' // default: 'primary'
-size: 'sm' | 'base' | 'lg' | 'xl' //default 'base'
+interface EaseButtonProps {
+    text?: string;
+    size?: 'sm' | 'base' | 'lg' | 'xl'; * default 'base'
+    variant?: 'primary' | 'secondary' | 'link'; * default 'primary'
+    rounded?: 'none' | 'base' | 'full'; * default 'base'
+    slot?: boolean; * default false
+    loading?: boolean; * dwfault false
+}
 ```

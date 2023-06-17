@@ -1,3 +1,3 @@
-import ColorfulButton from "./components/ColorfulButton.vue";
-
-export { ColorfulButton };
+import EaseButton from "./components/EaseButton.vue";
+import { useCustomButton } from "./stores/customizeButton";
+export { EaseButton, useCustomButton };

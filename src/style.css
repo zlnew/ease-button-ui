@@ -5,6 +5,7 @@
 
   color: #000;
   background-color: #ffffff;
+  --global-color: #aaca0a;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -26,14 +27,4 @@ body {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-}
-
-.flex {
-  align-items: flex-start;
-  display: flex;
-  margin-bottom: 1rem;
-}
-
-button {
-  margin-right: 1rem;
 }

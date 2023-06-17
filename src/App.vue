@@ -1,204 +1,82 @@
 <script setup lang="ts">
-import ColorfulButton from './components/ColorfulButton.vue';
+import { EaseButton, useCustomButton } from 'ease-button-ui';
 </script>
 
 <template>
-  <div class="flex">
-    <h1>Colorful Button</h1>
+  <div class="mb-8 flex justify-right">
+    <h1 class="text-2xl font-bold text-blue-700">Ease Button UI</h1>
   </div>
 
-  <div class="flex">
-    <ColorfulButton v-bind="{
+  <div class="mb-4 flex justify-left space-x-4">
+    <EaseButton text="Is disabled!" disabled />
+    <EaseButton text="with text!" loading />
+    <EaseButton loading />
+  </div>
+
+  <div class="mb-4 flex justify-right space-x-4">
+    <EaseButton
+      v-bind="{
         text: 'Primary',
-        color: 'primary',
-        size: 'sm',
+        variant: 'primary',
       }"
     />
-    <ColorfulButton v-bind="{
+    <EaseButton
+      v-bind="{
         text: 'Secondary',
-        color: 'secondary',
-        size: 'sm',
+        variant: 'secondary',
       }"
     />
-    <ColorfulButton v-bind="{
-        text: 'Success',
-        color: 'success',
-        size: 'sm',
-      }"
-    />
-    <ColorfulButton v-bind="{
-        text: 'Warning',
-        color: 'warning',
-        size: 'sm',
-      }"
-    />
-    <ColorfulButton v-bind="{
-        text: 'Info',
-        color: 'info',
-        size: 'sm',
-      }"
-    />
-    <ColorfulButton v-bind="{
-        text: 'Danger',
-        color: 'danger',
-        size: 'sm',
-      }"
-    />
-    <ColorfulButton v-bind="{
-        text: 'Dark',
-        color: 'dark',
-        size: 'sm',
-      }"
-    />
-    <ColorfulButton v-bind="{
-        text: 'Light',
-        color: 'light',
-        size: 'sm',
+    <EaseButton
+      v-bind="{
+        text: 'Link',
+        variant: 'link',
       }"
     />
   </div>
 
-  <div class="flex">
-    <ColorfulButton v-bind="{
+  <div class="mb-4 flex justify-right space-x-4">
+    <EaseButton
+      v-bind="{
         text: 'Primary',
-        color: 'primary',
+        variant: 'primary',
+        rounded: 'none',
       }"
     />
-    <ColorfulButton v-bind="{
+    <EaseButton
+      v-bind="{
         text: 'Secondary',
-        color: 'secondary',
+        variant: 'secondary',
+        rounded: 'none',
       }"
     />
-    <ColorfulButton v-bind="{
-        text: 'Success',
-        color: 'success',
-      }"
-    />
-    <ColorfulButton v-bind="{
-        text: 'Warning',
-        color: 'warning',
-      }"
-    />
-    <ColorfulButton v-bind="{
-        text: 'Info',
-        color: 'info',
-      }"
-    />
-    <ColorfulButton v-bind="{
-        text: 'Danger',
-        color: 'danger',
-      }"
-    />
-    <ColorfulButton v-bind="{
-        text: 'Dark',
-        color: 'dark',
-      }"
-    />
-    <ColorfulButton v-bind="{
-        text: 'Light',
-        color: 'light',
+    <EaseButton v-bind="{
+        text: 'Link',
+        variant: 'link',
+        rounded: 'none',
       }"
     />
   </div>
 
-  <div class="flex">
-    <ColorfulButton v-bind="{
+  <div class="mb-4 flex justify-right space-x-4">
+    <EaseButton
+      v-bind="{
         text: 'Primary',
-        color: 'primary',
-        size: 'lg',
+        variant: 'primary',
+        rounded: 'full',
       }"
     />
-    <ColorfulButton v-bind="{
+    <EaseButton
+      v-bind="{
         text: 'Secondary',
-        color: 'secondary',
-        size: 'lg',
+        variant: 'secondary',
+        rounded: 'full',
       }"
     />
-    <ColorfulButton v-bind="{
-        text: 'Success',
-        color: 'success',
-        size: 'lg',
-      }"
-    />
-    <ColorfulButton v-bind="{
-        text: 'Warning',
-        color: 'warning',
-        size: 'lg',
-      }"
-    />
-    <ColorfulButton v-bind="{
-        text: 'Info',
-        color: 'info',
-        size: 'lg',
-      }"
-    />
-    <ColorfulButton v-bind="{
-        text: 'Danger',
-        color: 'danger',
-        size: 'lg',
-      }"
-    />
-    <ColorfulButton v-bind="{
-        text: 'Dark',
-        color: 'dark',
-        size: 'lg',
-      }"
-    />
-    <ColorfulButton v-bind="{
-        text: 'Light',
-        color: 'light',
-        size: 'lg',
-      }"
-    />
-  </div>
-
-  <div class="flex">
-    <ColorfulButton v-bind="{
-        text: 'Primary',
-        color: 'primary',
-        size: 'xl',
-      }"
-    />
-    <ColorfulButton v-bind="{
-        text: 'Secondary',
-        color: 'secondary',
-        size: 'xl',
-      }"
-    />
-    <ColorfulButton v-bind="{
-        text: 'Success',
-        color: 'success',
-        size: 'xl',
-      }"
-    />
-    <ColorfulButton v-bind="{
-        text: 'Warning',
-        color: 'warning',
-        size: 'xl',
-      }"
-    />
-    <ColorfulButton v-bind="{
-        text: 'Info',
-        color: 'info',
-        size: 'xl',
-      }"
-    />
-    <ColorfulButton v-bind="{
-        text: 'Danger',
-        color: 'danger',
-        size: 'xl',
-      }"
-    />
-    <ColorfulButton v-bind="{
-        text: 'Dark',
-        color: 'dark',
-        size: 'xl',
-      }"
-    />
-    <ColorfulButton v-bind="{
-        text: 'Light',
-        color: 'light',
-        size: 'xl',
+    <EaseButton
+      v-bind="{
+        text: 'Link',
+        variant: 'link',
+        rounded: 'full',
       }"
     />
   </div>
