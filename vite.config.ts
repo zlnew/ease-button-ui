@@ -9,14 +9,15 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
-      name: "ColorfulButton",
-      fileName: "colorful-button",
+      name: "EaseButton",
+      fileName: "ease-button-ui",
     },
     rollupOptions: {
-      external: ["vue"],
+      external: ["vue", "pinia"],
       output: {
         globals: {
           vue: "Vue",
+          pinia: "Pinia",
         },
       },
     },

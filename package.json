@@ -1,22 +1,25 @@
 {
-  "name": "vue-colorful-button-ui",
-  "version": "1.0.0",
-  "description": "A colorful bootstrap like button ui component for your vue js projects.",
-  "main": "./dist/fileName.umd.js",
-  "module": "./dist/fileName.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/fileName.esm.js",
-      "require": "./dist/fileName.js"
-    }
-  },
+  "name": "ease-button-ui",
+  "version": "1.1.2",
+  "description": "A simple yet customisable button UI for your Vue.js projects. With Ease!",
+  "type": "module",
   "files": [
     "dist"
   ],
+  "main": "./dist/ease-button-ui.umd.cjs",
+  "module": "./dist/ease-button-ui.js",
+  "exports": {
+    ".": {
+      "import": "./dist/ease-button-ui.js",
+      "require": "./dist/ease-button-ui.umd.cjs"
+    },
+    "./styles": "./dist/style.css"
+  },
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "vite build",
     "dev": "vite",
+    "build": "vite build",
+    "types": "vue-tsc",
     "serve": "vite preview"
   },
   "keywords": [
@@ -24,22 +27,25 @@
     "vue3",
     "component",
     "library",
-    "colorful",
-    "colorful button",
-    "bootstrap button",
+    "button component",
+    "ease",
+    "ease button",
     "vue button"
   ],
   "author": "zlnew",
   "peerDependencies": {
+    "pinia": "^2.1.4",
     "vue": "^3.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.3.1",
     "@vitejs/plugin-vue": "^4.1.0",
+    "ease-button-ui": "^1.1.2",
+    "tailwindcss": "^3.3.2",
     "typescript": "^5.0.2",
     "vite": "^4.3.9",
     "vite-plugin-dts": "^2.3.0",
-    "vue-tsc": "^1.4.2",
-    "vue": "^3.2.47"
+    "vue": "^3.2.47",
+    "vue-tsc": "^1.4.2"
   }
 }

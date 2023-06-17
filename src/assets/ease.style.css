@@ -1,0 +1,91 @@
+* {
+    font-weight: bolder;
+    font-family: inherit;
+}
+
+.ease-button {
+    cursor: pointer;
+    opacity: 1;
+    padding: 0.7rem 1.1rem !important;
+    line-height: inherit !important;
+}
+
+.ease-button:hover {
+    opacity: 0.8;
+}
+
+.ease-button:focus {
+    opacity: 0.8;
+    border: 2px solid transparent;
+    outline-style: solid;
+    outline-color: var(--ease-border-outline-color);
+    outline-offset: 2px;
+}
+
+.ease-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.ease-svg {
+	width: 3em;
+    height: 0.7em;
+    display: inline-block !important;
+}
+
+.loading-circle-primary {
+    fill: var(--ease-primary-color);
+}
+.loading-circle-white {
+    fill: var(--ease-white-color);
+}
+
+.size-sm {
+    font-size: x-small;
+}
+.size-base {
+    font-size: small;
+}
+.size-lg {
+    font-size: medium;
+}
+.size-xl {
+    font-size: large;
+}
+
+.color-primary {
+    background-color: var(--ease-primary-color);
+    color: var(--ease-white-color);
+    border: 2px solid transparent;
+}
+
+.color-secondary {
+    background-color: transparent;
+    color: var(--ease-primary-color);
+    border: 2px solid var(--ease-primary-color);
+}
+.color-secondary:focus {
+    border-color: var(--ease-primary-color);
+}
+
+.color-link {
+    text-decoration: underline;
+    background-color: transparent;
+    color: var(--ease-primary-color);
+    border: transparent;
+}
+.color-link:focus {
+    border: transparent;
+}
+
+.rounded-none {
+    border-radius: 0px;
+}
+
+.rounded-base {
+    border-radius: 0.2rem;
+}
+
+.rounded-full {
+    border-radius: 9999px;
+}
