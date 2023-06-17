@@ -1,6 +1,6 @@
 {
   "name": "ease-button-ui",
-  "version": "1.1.2",
+  "version": "1.1.4",
   "description": "A simple yet customisable button UI for your Vue.js projects. With Ease!",
   "type": "module",
   "files": [
@@ -13,7 +13,7 @@
       "import": "./dist/ease-button-ui.js",
       "require": "./dist/ease-button-ui.umd.cjs"
     },
-    "./styles": "./dist/style.css"
+    "./style": "./dist/style.css"
   },
   "types": "./dist/index.d.ts",
   "scripts": {
@@ -40,7 +40,7 @@
   "devDependencies": {
     "@types/node": "^20.3.1",
     "@vitejs/plugin-vue": "^4.1.0",
-    "ease-button-ui": "^1.1.2",
+    "ease-button-ui": "^1.1.4",
     "tailwindcss": "^3.3.2",
     "typescript": "^5.0.2",
     "vite": "^4.3.9",

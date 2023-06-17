@@ -1,5 +1,6 @@
 import './style.css';
 import './assets/output.tailwind.css';
+import "ease-button-ui/style";
 
 import { createApp } from 'vue';
 import { createPinia } from "pinia";

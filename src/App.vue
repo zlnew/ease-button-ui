@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { EaseButton } from 'ease-button-ui';
-import "ease-button-ui/styles";
+import { EaseButton, useCustomButton } from 'ease-button-ui';
 </script>
 
 <template>
