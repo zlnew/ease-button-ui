@@ -122,17 +122,17 @@ The Available properties are:
 
 ```ts
 interface EaseButtonProps {
-    type?: 'button' | 'submit' | 'reset', * defaults `button`
+    type?: 'button' | 'submit' | 'reset', // defaults `button`
     text?: string;
-    size?: 'sm' | 'base' | 'lg' | 'xl'; * defaults `base`
-    variant?: 'primary' | 'secondary' | 'link'; * defaults `primary`
-    rounded?: 'none' | 'base' | 'full'; * defaults `base`
-    slotted?: boolean; * defaults `false`
-    loading?: boolean; * defaults `false`
+    size?: 'sm' | 'base' | 'lg' | 'xl'; // defaults `base`
+    variant?: 'primary' | 'secondary' | 'link'; // defaults `primary`
+    rounded?: 'none' | 'base' | 'full'; // defaults `base`
+    slotted?: boolean; // defaults `false`
+    loading?: boolean; // defaults `false`
     onLoading?: () => ({
-        text?: string; * defaults `text`
-        icon?: VueComponent | boolean; * defaults `EaseIcon` 
-        disabled?: boolean; * defaults `true`
+        text?: string; // defaults `text`
+        icon?: VueComponent | boolean; // defaults `EaseIcon` 
+        disabled?: boolean; // defaults `true`
     });
 }
 
