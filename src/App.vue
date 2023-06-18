@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { EaseButton, useCustomButton } from 'ease-button-ui';
+import { ref } from 'vue';
+import EaseLoading from "./components/EaseLoading.vue";
+
+const isLoading = ref(false);
 </script>
 
 <template>
@@ -9,8 +12,23 @@ import { EaseButton, useCustomButton } from 'ease-button-ui';
 
   <div class="mb-4 flex justify-left space-x-4">
     <EaseButton text="Is disabled!" disabled />
-    <EaseButton text="with text!" loading />
-    <EaseButton loading />
+    <EaseButton
+      v-bind="{
+        text: 'Loading with text!',
+        loading: true,
+        onLoading: () => ({
+          text: false,
+          icon: EaseLoading,
+        }),
+      }"
+    />
+    <EaseButton
+      v-bind="{
+        text: 'Wait for me!',
+        variant: 'secondary',
+        loading: true,
+      }"
+    />
   </div>
 
   <div class="mb-4 flex justify-right space-x-4">
@@ -30,6 +48,19 @@ import { EaseButton, useCustomButton } from 'ease-button-ui';
       v-bind="{
         text: 'Link',
         variant: 'link',
+      }"
+    />
+    <EaseButton
+      v-bind="{
+        text: 'Success',
+        variant: 'success',
+      }"
+    />
+    <EaseButton
+      v-bind="{
+        text: 'Danger',
+        variant: 'danger',
+        loading: isLoading,
       }"
     />
   </div>

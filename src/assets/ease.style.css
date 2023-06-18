@@ -16,9 +16,8 @@
 
 .ease-button:focus {
     opacity: 0.8;
-    border: 2px solid transparent;
-    outline-style: solid;
-    outline-color: var(--ease-border-outline-color);
+    outline-style: var(--ease-outline-style);
+    outline-color: var(--ease-outline-color);
     outline-offset: 2px;
 }
 
@@ -27,55 +26,31 @@
     cursor: not-allowed;
 }
 
-.ease-svg {
+.ease-loading {
 	width: 3em;
     height: 0.7em;
     display: inline-block !important;
-}
-
-.loading-circle-primary {
-    fill: var(--ease-primary-color);
-}
-.loading-circle-white {
-    fill: var(--ease-white-color);
+    fill: var(--ease-color);
 }
 
 .size-sm {
-    font-size: x-small;
+    font-size: var(--ease-font-size-sm);
 }
 .size-base {
-    font-size: small;
+    font-size: var(--ease-font-size-base);
 }
 .size-lg {
-    font-size: medium;
+    font-size: var(--ease-font-size-lg);
 }
 .size-xl {
-    font-size: large;
+    font-size: var(--ease-font-size-xl);
 }
 
-.color-primary {
-    background-color: var(--ease-primary-color);
-    color: var(--ease-white-color);
-    border: 2px solid transparent;
-}
-
-.color-secondary {
-    background-color: transparent;
-    color: var(--ease-primary-color);
-    border: 2px solid var(--ease-primary-color);
-}
-.color-secondary:focus {
-    border-color: var(--ease-primary-color);
-}
-
-.color-link {
-    text-decoration: underline;
-    background-color: transparent;
-    color: var(--ease-primary-color);
-    border: transparent;
-}
-.color-link:focus {
-    border: transparent;
+.ease-color {
+    color: var(--ease-color);
+    background-color: var(--ease-background-color);
+    border: var(--ease-border);
+    text-decoration: var(--ease-text-decoration);
 }
 
 .rounded-none {
@@ -83,7 +58,7 @@
 }
 
 .rounded-base {
-    border-radius: 0.2rem;
+    border-radius: var(--ease-border-radius);
 }
 
 .rounded-full {

@@ -1,6 +1,6 @@
 # Ease Button UI
 
-A simple yet customisable button UI for your Vue.js projects. With Ease!
+A simple yet customizable button UI for your Vue.js projects. With Ease!
 
 ## Installation
 
@@ -42,39 +42,113 @@ import { EaseButton } from "ease-button-ui";
 </script>
 
 <template>
-    <EaseButton text="Hello World!" variant="primary" size="base" rounded="base" />
+    <!-- Basic Usage -->
+    <EaseButton text="Hello World!" />
 
-    <EaseButton text="Loading.." variant="primary" size="base" rounded="base" loading />
-
-    <EaseButton text="Hello World!" variant="primary" size="base" rounded="base" slot>
+    <!-- With slotted content -->
+    <EaseButton slotted>
         Hello World!
     </EaseButton>
+
+    <!-- Loading with text -->
+    <EaseButton
+      v-bind="{
+        text: 'Wait for me!',
+        loading: true,
+        onLoading: () => ({
+          text: 'Loading...',
+          icon: EaseLoading, // loading component
+        }),
+      }"
+    />
+
+    <!-- loading without text -->
+    <EaseButton
+      v-bind="{
+        text: 'Loading with text!',
+        loading: true,
+        onLoading: () => ({
+          text: false,
+          icon: EaseLoading, // loading component
+        }),
+      }"
+    />
 </template>
 ```
 
-## Custom Color
+## Custom Style
 
-You can modify the default color to your favorite color, by using this:
+You can modify ease button default style to your favorite style!. Take a look at this:
 
-```vue
-<script>
-import { EaseButton, useCustomButton} from "ease-button-ui";
+```js
+import { useEaseButton} from "ease-button-ui";
 
-const ease = useCustomButton();
+const easeButton = useEaseButton();
 
-ease.defineColor('--favorite-color') * accept only css variable and hex code;
-</script>
+easeButton.defaultStyle({
+    color: '#fff',
+    bgColor: '#1d4ed8',
+    border: "2px solid #1d4ed8",
+    borderRadius: "0.2rem",
+    outlineStyle: 'solid',
+    outlineColor: "#1d4ed8",
+    outlineColorOpacity: 0.5,
+    classes: 'transition ease-in-out',
+});
 ```
 
-## available properties
+## Custom Variant
+
+You also want to add variants other than primary, secondary, and link:
+
+```js
+easeButton.addVariant({
+    success: {
+        color: '#fff',
+        bgColor: '#16a34a',
+        // the rest are the same as defaultStyle
+    },
+    danger: {
+        color: '#fff',
+        bgColor: '#dc2626',
+        // the rest are the same as defaultStyle
+    },
+});
+```
+
+## Available properties
+
+The Available properties are:
 
 ```ts
 interface EaseButtonProps {
+    type?: 'button' | 'submit' | 'reset', * defaults `button`
     text?: string;
-    size?: 'sm' | 'base' | 'lg' | 'xl'; * default 'base'
-    variant?: 'primary' | 'secondary' | 'link'; * default 'primary'
-    rounded?: 'none' | 'base' | 'full'; * default 'base'
-    slot?: boolean; * default false
-    loading?: boolean; * dwfault false
+    size?: 'sm' | 'base' | 'lg' | 'xl'; * defaults `base`
+    variant?: 'primary' | 'secondary' | 'link'; * defaults `primary`
+    rounded?: 'none' | 'base' | 'full'; * defaults `base`
+    slotted?: boolean; * defaults `false`
+    loading?: boolean; * defaults `false`
+    onLoading?: () => ({
+        text?: string; * defaults `text`
+        icon?: VueComponent | boolean; * defaults `EaseIcon` 
+        disabled?: boolean; * defaults `true`
+    });
+}
+
+interface IButtonStyle {
+    color?: string | null;
+    bgColor?: string | null;
+    border?: string | null;
+    borderRadius?: string | null;
+    outlineStyle?: string | null;
+    outlineColor?: string | null;
+    outlineColorOpacity?: number | null;
+    textDecoration?: string | null;
+    classes?: string | null;
+}
+
+export interface IButtonVariant {
+    [key: string]: IButtonStyle;
 }
 ```

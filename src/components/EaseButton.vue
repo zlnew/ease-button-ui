@@ -1,33 +1,36 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useCustomButton } from "../stores/customizeButton";
-import Loading from "./EaseLoading.vue";
+import { useEaseButton } from '../stores/useEaseButton';
+import EaseLoading from "./EaseLoading.vue";
 
 const props = withDefaults(
     defineProps<{
+        type?: 'button' | 'submit' | 'reset',
         text?: string;
         size?: 'sm' | 'base' | 'lg' | 'xl';
         variant?: 'primary' | 'secondary' | 'link';
         rounded?: 'none' | 'base' | 'full';
-        slot?: boolean;
+        slotted?: boolean;
         loading?: boolean;
+        onLoading?: () => ({
+            text?: string;
+            icon?: any | boolean;
+            disabled?: boolean;
+        });
     }>(), {
+        type: "button",
         text: "",
         size:'base',
         variant: 'primary',
         rounded: 'base',
-        slot: false,
+        slotted: false,
         loading: false,
+        onLoading: () => ({
+            icon: EaseLoading,
+            disabled: true,
+        }),
     },
 );
-
-const colorClasses = computed(() => {
-    switch (props.variant) {
-        case 'primary': return 'color-primary';
-        case 'secondary': return 'color-secondary';
-        case 'link': return 'color-link';
-    }
-});
 
 const sizeClasses = computed(() => {
     switch (props.size) {
@@ -46,79 +49,83 @@ const roundedClasses = computed(() => {
     }
 });
 
-const loadingClasses = computed(() => {
-    if (props.variant === 'primary') {
-        return 'loading-circle-white';
-    } else {
-        return 'loading-circle-primary';
-    }
-});
+const whenLoading = computed(() => {
+    if (props.loading) {
+        const onLoading = props.onLoading();
 
-function convertToHex(string: string): string {
-    if (string.startsWith('#')) return string;
+        const text = onLoading.text !== undefined ? onLoading.text : props.text;
+        const disabled = onLoading.disabled !== undefined ? onLoading.disabled : true;
+        const icon = onLoading.icon !== undefined ? onLoading.icon : EaseLoading;
 
-    if (string.startsWith('--')) return cssVarToHex(string);
-
-    return '';
-}
-
-function cssVarToHex(cssVariable: string): string {
-    const colorValue = getComputedStyle(document.documentElement).getPropertyValue(cssVariable).trim();
-
-    if (colorValue.startsWith('#')) return colorValue;
-
-    if (colorValue.startsWith('rgb')) {
-        const [r, g, b] = colorValue.match(/\d+/g) ?? [];
-        return `#${Number(r).toString(16)}${Number(g).toString(16)}${Number(b).toString(16)}`;
-    }
-
-    return '';
-}
-
-function hexToRgba(hex: string, opacity: number): string {
-    const sanitizedHex = hex.replace('#', '');
-    const r = parseInt(sanitizedHex.substring(0, 2), 16);
-    const g = parseInt(sanitizedHex.substring(2, 4), 16);
-    const b = parseInt(sanitizedHex.substring(4, 6), 16);
-    return `rgba(${r}, ${g}, ${b}, ${opacity})`;
-}
-
-const ease = useCustomButton();
-
-const colorCode = computed(() => {
-    if (ease.style.colorCode) {
-        const code = convertToHex(ease.style.colorCode);
         return {
-            color: code,
-            outline: hexToRgba(code, 0.5),
-        }
-    } return {};
+            text,
+            disabled,
+            icon,
+            ...onLoading,
+        };
+    }
+
+    return {
+        text: props.text,
+        disabled: false,
+        icon: false,
+    };
 });
 
+const extendedClasses = computed(() => {
+    return useEaseButton().getStyles().classes;
+});
+
+const buttonStyle = computed(() => {
+    return useEaseButton().getVariantStyles(props.variant);
+});
 </script>
 
 <template>
-    <button v-if="!slot" class="ease-button" v-bind="{
-        class: [colorClasses, sizeClasses, roundedClasses],
-        disabled: loading,
-    }">
-        <Loading v-if="loading" :class="[loadingClasses]" />
-        {{ props.text }}
+    <button v-if="!slotted" class="ease-button ease-color" 
+        v-bind="{
+            type: type,
+            class: [extendedClasses, sizeClasses, roundedClasses],
+            disabled: whenLoading.disabled,
+        }"
+    >
+        <component v-if="loading" :is="whenLoading.icon" />
+        <template v-if="whenLoading.text">
+            {{ whenLoading.text || props.text }}
+        </template>
     </button>
 
-    <button v-else class="ease-button" v-bind="{
-        class: [colorClasses, sizeClasses, roundedClasses],
-    }">
-        <slot></slot>
+    <button v-else class="ease-button ease-color"
+        v-bind="{
+            type: type,
+            class: [extendedClasses, sizeClasses, roundedClasses],
+            disabled: whenLoading.disabled,
+        }"
+    >
+        <component v-if="loading" :is="whenLoading.icon" />
+        <template v-if="whenLoading.text">
+            {{ whenLoading.text }}
+        </template>
+        <template v-else>
+            <slot />
+        </template>
     </button>
 </template>
 
 <style scoped>
 * {
-    --ease-white-color: #fff;
-    --ease-dark-color: #000;
-    --ease-primary-color: v-bind(colorCode.color);
-    --ease-border-outline-color: v-bind(colorCode.outline);
+    --ease-color: v-bind(buttonStyle.color);
+    --ease-background-color: v-bind(buttonStyle.bgColor);
+    --ease-border: v-bind(buttonStyle.border);
+    --ease-border-radius: v-bind(buttonStyle.borderRadius);
+    --ease-outline-color: v-bind(buttonStyle.outlineColor);
+    --ease-outline-style: v-bind(buttonStyle.outlineStyle);
+    --ease-text-decoration: v-bind(buttonStyle.textDecoration);
+
+    --ease-font-size-sm: x-small;
+    --ease-font-size-base: small;
+    --ease-font-size-lg: medium;
+    --ease-font-size-xl: large;
 }
 </style>
 
