@@ -148,7 +148,7 @@ interface IButtonStyle {
     classes?: string | null;
 }
 
-export interface IButtonVariant {
+interface IButtonVariant {
     [key: string]: IButtonStyle;
 }
 ```
