@@ -16,24 +16,6 @@ Or install it by running the following command:
 npm install pinia
 ```
 
-## Registration
-
-On your `'main.js'`
-
-```js
-import "ease-button-ui/style";
-import { createPinia } from "pinia";
-
-import { createApp } from 'vue';
-import App from './App.vue';
-
-const pinia = createPinia();
-const vue = createApp(App);
-
-vue.use(pinia);
-vue.mount('#app')
-```
-
 ## Usage
 
 ```vue
@@ -86,14 +68,14 @@ import { useEaseButton} from "ease-button-ui";
 const easeButton = useEaseButton();
 
 easeButton.defaultStyle({
-    color: '#fff',
-    bgColor: '#1d4ed8',
+    color: '#fff', // accept css variables, hex, and rgb
+    bgColor: '#1d4ed8', // accept css variables, hex, and rgb
     border: "2px solid #1d4ed8",
     borderRadius: "0.2rem",
     outlineStyle: 'solid',
     outlineColor: "#1d4ed8",
     outlineColorOpacity: 0.5,
-    classes: 'transition ease-in-out',
+    classes: 'transition ease-in-out', // define your classes as default style
 });
 ```
 
@@ -106,12 +88,12 @@ easeButton.addVariant({
     success: {
         color: '#fff',
         bgColor: '#16a34a',
-        // the rest are the same as defaultStyle
+        // the rest are the same as defaultStyle({})
     },
     danger: {
         color: '#fff',
         bgColor: '#dc2626',
-        // the rest are the same as defaultStyle
+        // the rest are the same as defaultStyle({})
     },
 });
 ```
@@ -130,7 +112,7 @@ interface EaseButtonProps {
     slotted?: boolean; // defaults `false`
     loading?: boolean; // defaults `false`
     onLoading?: () => ({
-        text?: string; // defaults `text`
+        text?: string; // defaults your button `text`
         icon?: VueComponent | boolean; // defaults `EaseIcon` 
         disabled?: boolean; // defaults `true`
     });

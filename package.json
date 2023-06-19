@@ -1,38 +1,41 @@
 {
   "name": "ease-button-ui",
   "version": "1.1.6",
-  "description": "A simple yet customisable button UI for your Vue.js projects. With Ease!",
   "type": "module",
-  "files": [
-    "dist"
-  ],
   "main": "./dist/ease-button-ui.umd.cjs",
   "module": "./dist/ease-button-ui.js",
+  "types": "./dist/ease-button-ui.d.ts",
   "exports": {
     ".": {
       "import": "./dist/ease-button-ui.js",
       "require": "./dist/ease-button-ui.umd.cjs"
-    },
-    "./style": "./dist/style.css"
+    }
   },
-  "types": "./dist/index.d.ts",
+  "files": ["dist"],
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && vue-tsc --emitDeclarationOnly",
     "types": "vue-tsc",
     "serve": "vite preview"
   },
+  "description": "A simple yet customizable button UI for your Vue.js projects. With Ease!",
+  "author": "zlnew",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zlnew/ease-button-ui.git"
+  },
   "keywords": [
+    "ease button ui",
+    "ease",
+    "vue button",
+    "button ui",
+    "button component",
     "vue",
     "vue3",
-    "component",
-    "library",
-    "button component",
-    "ease",
-    "ease button",
-    "vue button"
+    "vue component",
+    "component"
   ],
-  "author": "zlnew",
   "peerDependencies": {
     "pinia": "^2.1.4",
     "vue": "^3.0.0"
@@ -45,6 +48,7 @@
     "vite": "^4.3.9",
     "vite-plugin-dts": "^2.3.0",
     "vue": "^3.2.47",
-    "vue-tsc": "^1.4.2"
+    "vue-tsc": "^1.4.2",
+    "vite-plugin-css-injected-by-js": "^3.1.1"
   }
 }

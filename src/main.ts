@@ -3,7 +3,7 @@ import './assets/output.tailwind.css';
 
 import { createApp } from 'vue';
 import { createPinia } from "pinia";
-import { EaseButton, useEaseButton } from './index';
+import { EaseButton, useEaseButton } from './ease-button-ui';
 import App from './App.vue';
 
 const pinia = createPinia();
