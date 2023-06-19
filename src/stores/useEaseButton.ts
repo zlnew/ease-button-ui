@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import { convertToHex, hexToRgba } from "../utilities/color";
 
 export interface IButtonStyle {
+    [key: string]: string | number | null | undefined;
     color?: string | null;
     bgColor?: string | null;
     border?: string | null;
@@ -20,6 +21,7 @@ export interface IButtonVariant {
 export const defaultStyle: IButtonStyle = {
     color: "#fff",
     bgColor: "#1d4ed8",
+    border: "transparent",
     borderRadius: "0.2rem",
     outlineStyle: 'solid',
     outlineColor: "#1d4ed8",
@@ -37,21 +39,40 @@ export const useEaseButton = defineStore('ease-button', {
     actions: { 
         defaultStyle(style: IButtonStyle) {
             this.style = { ...defaultStyle, ...style };
+            this.addVariant({});
         },
         addVariant(variant: IButtonVariant) {
-            const { color, bgColor, outlineColor } = this.getStyles();
+            const defaultStyles = { ...defaultStyle, ...this.style };
+            const defaultVariantStyles = {
+                primary: {
+                    color: defaultStyles.color,
+                    bgColor: defaultStyles.bgColor,
+                },
+                secondary: {
+                    color: defaultStyles.bgColor,
+                    bgColor: 'transparent',
+                    border: `2px solid ${defaultStyles.bgColor}`
+                },
+                link: {
+                    color: defaultStyles.bgColor,
+                    bgColor: 'transparent',
+                    textDecoration: 'underline',
+                },
+            }
 
             this.variant = {
-                ...defaultVariant,
+                ...defaultVariantStyles,
                 ...variant,
-                primary: { color, bgColor },
-                secondary: { color: bgColor, border: `2px solid ${bgColor}` },
-                link: { color: bgColor, textDecoration: 'underline' }
             };
 
             for (const key in this.variant) {
                 if (Object.prototype.hasOwnProperty.call(this.variant, key)) {
-                    this.variant[key].outlineColor = outlineColor;
+                    const variantStyle = this.variant[key];
+                    for (const prop in defaultStyles) {
+                        if (Object.prototype.hasOwnProperty.call(defaultStyles, prop) && !variantStyle[prop]) {
+                            variantStyle[prop] = defaultStyles[prop];
+                        }
+                    }
                 }
             }
         },
@@ -74,7 +95,6 @@ export const useEaseButton = defineStore('ease-button', {
             const variantStyles = { ...state.variant[name] };
 
             return {
-                ...defaultStyle,
                 ...variantStyles,
                 color: convertToHex(variantStyles.color || ''),
                 bgColor: convertToHex(variantStyles.bgColor || ''),

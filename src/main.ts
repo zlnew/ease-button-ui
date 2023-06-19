@@ -21,7 +21,7 @@ easeButton.defaultStyle({
 
 easeButton.addVariant({
     success: {
-        color: '#fff',
+        color: 'white',
         bgColor: '#16a34a',
     },
     danger: {
@@ -29,3 +29,4 @@ easeButton.addVariant({
         bgColor: '#dc2626',
     },
 });
+
