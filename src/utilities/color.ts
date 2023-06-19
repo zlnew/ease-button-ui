@@ -3,7 +3,7 @@ function convertToHex(string: string): string {
     if (string.startsWith('rgb')) return rgbToHex(string);
     if (string.startsWith('--')) return cssVarToHex(string);
 
-    return '';
+    return string;
 }
 
 function rgbToHex(string: string): string {
@@ -15,12 +15,9 @@ function cssVarToHex(cssVariable: string): string {
     const colorValue = getComputedStyle(document.documentElement).getPropertyValue(cssVariable).trim();
 
     if (colorValue.startsWith('#')) return colorValue;
+    if (colorValue.startsWith('rgb')) return rgbToHex(colorValue);
 
-    if (colorValue.startsWith('rgb')) {
-        return rgbToHex(colorValue);
-    }
-
-    return '';
+    return cssVariable;
 }
 
 function hexToRgba(hex: string, opacity: number): string {
