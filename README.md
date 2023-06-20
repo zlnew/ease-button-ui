@@ -1,6 +1,7 @@
 # Ease Button UI
 
-A simple yet customizable button UI for your Vue.js projects. With Ease!
+A simple yet customizable button UI for your Vue.js projects. With Ease! <br /> <br />
+Full Documentation: https://ease-button-ui.netlify.app/#/
 
 ## Installation
 
@@ -9,7 +10,7 @@ You can install `ease-button-ui` via npm by running the following command:
 ```bash
 npm install ease-button-ui --save-dev
 ```
-* this package require you to install pinia, so make sure you already have it.
+This package require you to install pinia, so make sure you already have it.
 Or install it by running the following command:
 
 ```bash
@@ -96,41 +97,4 @@ easeButton.addVariant({
         // the rest are the same as defaultStyle({})
     },
 });
-```
-
-## Available properties
-
-The Available properties are:
-
-```ts
-interface EaseButtonProps {
-    type?: 'button' | 'submit' | 'reset', // defaults `button`
-    text?: string;
-    size?: 'sm' | 'base' | 'lg' | 'xl'; // defaults `base`
-    variant?: 'primary' | 'secondary' | 'link'; // defaults `primary`
-    rounded?: 'none' | 'base' | 'full'; // defaults `base`
-    slotted?: boolean; // defaults `false`
-    loading?: boolean; // defaults `false`
-    onLoading?: () => ({
-        text?: string; // defaults your button `text`
-        icon?: VueComponent | boolean; // defaults `EaseIcon` 
-        disabled?: boolean; // defaults `true`
-    });
-}
-
-interface IButtonStyle {
-    color?: string | null;
-    bgColor?: string | null;
-    border?: string | null;
-    borderRadius?: string | null;
-    outlineStyle?: string | null;
-    outlineColor?: string | null;
-    outlineColorOpacity?: number | null;
-    textDecoration?: string | null;
-    classes?: string | null;
-}
-
-interface IButtonVariant {
-    [key: string]: IButtonStyle;
-}
 ```
